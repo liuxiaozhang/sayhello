@@ -9,4 +9,3 @@ app.jinja_env.lstrip_blocks = True
 db = SQLAlchemy(app)
 from sayhello import views, errors, commands
 
-print(__name__)
