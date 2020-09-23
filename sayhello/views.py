@@ -6,7 +6,7 @@ from sayhello.forms import HelloForm
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    message = Message.query.order_by(Message.timestamp.desc()).all()
+    messages = Message.query.order_by(Message.timestamp.desc()).all()
     form = HelloForm()
     if form.validate_on_submit():
         name = form.name.data
@@ -16,4 +16,4 @@ def index():
         db.session.commit()
         flash('Your message have been sent to the world!')
         return redirect(url_for('index'))
-    return render_template('index.html', form=form, message=message)
+    return render_template('index.html', form=form, messages=messages)
